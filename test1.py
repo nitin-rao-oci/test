@@ -1,5 +1,5 @@
 def hello_world():
-	return("Hello, World!")
+    return "Hello, World!"  # removed unnecessary parentheses
 
 if __name__ == "__main__":
-	hello_world()
+    print(hello_world())  # now prints the return value
