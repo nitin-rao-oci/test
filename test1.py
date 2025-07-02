@@ -1,25 +1,35 @@
-def HelloWorld(   ):
- return "Hello, World!"
+def   HelloWorld( ):
+   return(  "Hello, World!" )
 
-def goodbye_world(): 
- print("Goodbye!") print("Again!")
+def GOODBYE_WORLD(): print("Goodbye!") ; print ("Again!")
 
-def   BAD_FUNCTION_name(  ):
-  value = 1
-  if value = 1:
-    return( "This line has weird spacing" )  
-    print("Unreachable code")
+def anotherFunction( x ,y= 2):return(x+y)
 
-class Test:
- def __init__(self): self.msg = "Bad class definition"
+def __BADfunction123(): 
+	"""Bad docstring style""" 
+	for i in range(  3 ): print ( i ) 
 
- if True:
-  def nested():
-    print ("Nested inside class and if")
+class   badlyFormatted:
+ def __init__(self):self.val= 0 
+
+ def DoThing(self ) :
+      if(self.val==0):print ("Doing the thing!")
+
+ def methodWithLogicError(self):
+    items = [1, 2, 3]
+    for i in range(len(items)):
+     print(items[i+1])
+
+x=42;y= 13 ;z= x+y
+
+def misplaced(): pass; return None
 
 if __name__=="__main__":
-    HelloWorld( )
-    goodbye_world()
-    BAD_FUNCTION_name( )
-    x = 1
-    if x==1: print ("inline if")
+ HelloWorld()
+ GOODBYE_WORLD()
+ anotherFunction(3 )
+ __BADfunction123()
+ obj = badlyFormatted()
+ obj.DoThing()
+ obj.methodWithLogicError()
+ if z> 50 :print( "Big number" )
