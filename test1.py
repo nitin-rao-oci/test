@@ -1,9 +1,12 @@
-def   HelloWorld( ):
-   return(  "Hello, World!" )
+def hello_world():
+    return "Hello, World!"
 
-def GOODBYE_WORLD(): print("Goodbye!") ; print ("Again!")
+def goodbye_world(): 
+    print("Goodbye!")
+    print ("Again!")
 
-def anotherFunction( x ,y= 2):return(x+y)
+def another_function(x, y):
+    return x + y
 
 def __BADfunction123(): 
 	"""Bad docstring style""" 
