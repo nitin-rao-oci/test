@@ -31,7 +31,8 @@ class  MyClass:
    y=2
   return x+y
 
-x,y= 10,20;z=x+y
+x, y = 10, 20
+z = x + y
 
 if __name__=="__main__":
     print(hello_hello( ))
