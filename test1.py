@@ -8,9 +8,10 @@ def goodbye_world():
 def another_function(x, y):
     return x + y
 
-def __BADfunction123(): 
-	"""Bad docstring style""" 
-	for i in range(  3 ): print ( i ) 
+def bad_function_123():
+    """Bad docstring style"""
+    for i in range(3):
+        print(i) 
 
 class   badlyFormatted:
  def __init__(self):self.val= 0 
