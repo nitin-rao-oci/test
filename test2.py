@@ -2,7 +2,8 @@ def  hello_hello( ):
 	"Return a greeting"
 	return ( "Hello Hello!" )  # docstring style, spacing, extra parentheses
 
-def add(x,y):return x+y  # no spaces, single line
+def add(x, y):
+    return x + y
 
 def RepeatMessage(msg, times =2 ):
     for i in range(times): print(msg)  # one-line loop, bad spacing
