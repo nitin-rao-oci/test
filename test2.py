@@ -30,7 +30,7 @@ class MyClass:
         if self.value > 5:
             print("Computing...")
 
-    def bad_indent(self):
+    def add_1_2(self):
         x = 1
         y = 2
         return x + y
