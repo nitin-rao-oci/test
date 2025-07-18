@@ -43,4 +43,4 @@ if __name__ == "__main__":
     print(mixed_case_function(1))
     obj = MyClass()
     obj.compute()
-    obj.bad_indent()
+    obj.add_1_2()
