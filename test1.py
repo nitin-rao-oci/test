@@ -18,8 +18,8 @@ class BadlyFormatted:
         self.val = 0
 
     def do_thing(self):
-            if self.val == 0:
-                print("Doing the thing!")
+        if self.val == 0:
+            print("Doing the thing!")
 
     def method_with_logic_error(self):
         items = [1, 2, 3]
