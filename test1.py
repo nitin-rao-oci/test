@@ -26,6 +26,32 @@ class BadlyFormatted:
         for item in items[1:]:
             print(item)
 
+# ❌ Variable shadowing (shadowing built-in 'list')
+def build_list(list):
+    return [x for x in list if x > 0]
+
+# ❌ Mutable default argument
+def append_to(value, lst=[]):
+    lst.append(value)
+    return lst
+
+# ❌ Off-by-one bug: should be range(1, 6)
+def inclusive_range_bug():
+    for i in range(1, 5):
+        print(i)
+
+def print_indexed_items(items):
+    i = 0
+    while i < len(items):
+        print(i, items[i])
+        i += 1
+
+def total(items):
+    result = 0
+    for i in items:
+        result += i
+    return result
+
 x = 42
 y = 13
 z = x + y
@@ -41,5 +67,10 @@ if __name__ == "__main__":
     obj = BadlyFormatted()
     obj.do_thing()
     obj.method_with_logic_error()
+    print(build_list([-1, 2, 3]))
+    print(append_to("x"))
+    inclusive_range_bug()
+    print_indexed_items(["a", "b", "c"])
+    print(total([1, 2, 3]))
     if z > 50:
         print("Big number")
