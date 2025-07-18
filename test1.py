@@ -23,8 +23,8 @@ class BadlyFormatted:
 
     def method_with_logic_error(self):
         items = [1, 2, 3]
-        for i in range(len(items) - 1):
-            print(items[i + 1])
+        for item in items[1:]:
+            print(item)
 
 x = 42
 y = 13
