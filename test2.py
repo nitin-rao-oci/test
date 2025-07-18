@@ -15,10 +15,6 @@ def final_function():
         pass
     return
 
-def infinite_loop():
-    while True:
-        pass
-
 def mixed_case_function(arg1, arg2=5):
     return arg1 + arg2
 
