@@ -26,18 +26,17 @@ class BadlyFormatted:
         for item in items[1:]:
             print(item)
 
-# ❌ Variable shadowing (shadowing built-in 'list')
-def build_list(list):
-    return [x for x in list if x > 0]
+def build_list(input_list):
+    return [x for x in input_list if x > 0]
 
-# ❌ Mutable default argument
-def append_to(value, lst=[]):
+def append_to(value, lst=None):
+    if lst is None:
+        lst = []
     lst.append(value)
     return lst
 
-# ❌ Off-by-one bug: should be range(1, 6)
 def inclusive_range_bug():
-    for i in range(1, 5):
+    for i in range(1, 6):
         print(i)
 
 def print_indexed_items(items):
