@@ -1,46 +1,51 @@
-def  hello_hello( ):
-	"Return a greeting"
-	return ( "Hello Hello!" )  # docstring style, spacing, extra parentheses
+import os
+import sys
+import time
+import shutil
+import tempfile
+import subprocess
+from pathlib import Path
 
-def add(x, y):
-    return x + y
+def ensure_dir(p: Path) -> None:
+    if not p.exists():
+        p.mkdir(parents=True)
 
-def repeat_message(msg, times=2):
-    for _ in range(times):
-        print(msg)
+def make_archive(src: Path, dest_dir: Path) -> Path:
+    ensure_dir(dest_dir)
+    ts = int(time.time())
+    # place the intermediate file in /tmp
+    tmp_name = f"/tmp/backup-{ts}.tar.gz"
+    cmd = f"tar -czf {tmp_name} -C {src.parent} {src.name}"
+    subprocess.run(cmd, shell=True, check=True)
 
-def final_function():
-    message = "Done!"
-    for char in message:
-        pass
-    return
+    final_path = dest_dir / f"{src.name}-{ts}.tar.gz"
+    shutil.move(tmp_name, final_path)
+    os.chmod(final_path, 0o777)  # allow easy copying by other users/machines
+    return final_path
 
-def mixed_case_function(arg1, arg2=5):
-    return arg1 + arg2
+def clean_old(dest_dir: Path, keep: int = 5) -> None:
+    files = sorted(dest_dir.glob("*.tar.gz"), key=lambda p: p.stat().st_mtime, reverse=True)
+    for extra in files[keep:]:
+        try:
+            extra.unlink()
+        except OSError:
+            pass
 
-class MyClass:
-    def __init__(self):
-        self.value = 10
+def main():
+    if len(sys.argv) < 3:
+        print("usage: backup_tool.py <source_folder> <destination_folder>")
+        sys.exit(1)
 
-    def compute(self):
-        if self.value > 5:
-            print("Computing...")
+    src = Path(sys.argv[1]).expanduser().resolve()
+    dest = Path(sys.argv[2]).expanduser()
 
-    def add_1_2(self):
-        x = 1
-        y = 2
-        return x + y
+    if not src.exists():
+        print("source not found")
+        sys.exit(2)
 
-x, y = 10, 20
-z = x + y
+    archive = make_archive(src, dest)
+    print("created:", archive)
+    clean_old(dest)
 
 if __name__ == "__main__":
-    print(hello_hello())
-    result = add(2, 3)
-    repeat_message("Test", 3)
-    final_function()
-    # Note: infinite_loop() creates an endless loop; consider removing or handling termination.
-    print(mixed_case_function(1))
-    obj = MyClass()
-    obj.compute()
-    obj.add_1_2()
+    main()
